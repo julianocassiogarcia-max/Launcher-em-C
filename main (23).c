@@ -1,0 +1,82 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+void limparBuffer(void) {
+	int c;
+	while ((c = getchar()) != '\n' && c != EOF);
+}
+void limparTela (void) {
+#ifdef _WIN32 
+	system("cls"); 
+#else
+	system("clear"); 
+#endif
+}
+
+void jokenpo (void) {
+	int chuteJogador;
+	int jogarNovamente;
+	int pontos = 0;
+
+	do {
+	    limparTela();
+		printf("\033[1;35mBEM VINDO AO JOKÊNPO\033[0m\n");
+		printf("SUAS ESCOLHAS:\n");
+		printf("\n1 - Pedra\n2 - Papel\n3 - Tesoura\n");
+
+		for(int i = 0; i < 3; i++) {
+			int bot = rand() % 3;
+
+			//Se o usuário digitar algum caractere diferente de 1, 2 ou 3, ele vai mostrar opão inválida e vai limpar o nuffer, impedindo que o programa trave.
+			printf("Digite o seu palpite: ");
+			if (scanf("%d", &chuteJogador) != 1 || chuteJogador < 1 || chuteJogador > 3) {
+				limparBuffer();
+				printf("Opção inválida!\n");
+				i--; //Não conta como uma rodada do jogador
+				continue;
+			}
+			if(bot == 0 && chuteJogador == 1) {
+				printf("\n\033[33mEMPATE 🫤  BOA SORTE NA PRÓXIMA RODADA\033[0m\n");
+			} else if (bot == 1 && chuteJogador == 1) {
+				printf("\033[1;32mVOCÊ VENCEU ESSA RODADA  😄\033[0m\n");
+				pontos += 1;
+			} else if(bot == 2 && chuteJogador == 1) {
+				printf("\n\033[1;31mVOCÊ PERDEU ESSA RODADA 🔴\033[0m\n");
+			} else if(bot == 0 && chuteJogador == 2) {
+				printf("\n\033[1;32mVOCÊ VENCEU ESSA RODADA  😄\033[0m\n");
+				pontos += 1;
+			} else if (bot == 1 && chuteJogador == 2) {
+				printf("\n\033[33mEMPATE 🫤  BOA SORTE NA PRÓXIMA RODADA\033[0m\n");
+			} else if(bot == 2 && chuteJogador == 2) {
+				printf("\n\033[1;31mVOCÊ PERDEU ESSA RODADA 🔴\033[0m\n");
+			} else if(bot == 0 && chuteJogador == 3) {
+				printf("\n\033[1;31mVOCÊ PERDEU ESSA RODADA 🔴\033[0m\n");
+			} else if (bot == 1 && chuteJogador == 3) {
+				printf("\n\033[1;32mVOCÊ VENCEU ESSA RODADA  😄\033[0m\n");
+				pontos += 1;
+			} else if(bot == 2 && chuteJogador == 3) {
+				printf("\n\033[33mEMPATE 🫤  BOA SORTE NA PRÓXIMA RODADA\033[0m\n");
+			}
+		}
+		printf("Parabéns você fez %d/3 pontos!!!", pontos);
+		printf("Você deseja jogar novamente? Digite 0 para sair e 1 para jogar de novo: ");
+		do {
+			scanf("%d", &jogarNovamente);
+			if(jogarNovamente != 1 && jogarNovamente != 0) {
+				limparBuffer();
+				printf("\nOpção inválida,digite (1 ou 0): ");
+			}
+		} while(jogarNovamente != 1 && jogarNovamente != 0);
+		if(jogarNovamente == 1) {
+				pontos = 0;
+			}
+	} while(jogarNovamente != 0);
+	limparTela();
+}
+int main()
+{
+    jokenpo();
+    printf("\nObrigado por ter jogado!");
+    return 0;
+}
