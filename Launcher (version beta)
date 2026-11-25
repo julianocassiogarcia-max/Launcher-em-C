@@ -125,7 +125,7 @@ void rpg (void) {
 		printf("Incrível! Você agora possui %s!\n", armas[armaPersonagem - 1]);
 		printf("Antes de se despedir, o prefeito da sua cidade vem ao seu encontro e diz :\n\033[1;35mPREFEITO AFONSO: \033[0mJovem %s, pegue essas moedas de ouro para te ajudar em sua jornada, você é nossa última esperança!\n\n\033[1;33mVOCÊ RECEBEU 10 MOEDAS DE OURO!\033[0m\n\n", nomePersonagem);
 		printf("\033[1;36m%s!\033[0m Você irá participar de uma grande aventura, nessa sua jornada, lute pelo caminho da fé para ganhar a sua grande recompensa.\n", nomePersonagem);
-		printf("\n\033[33m----------Você se despede da sua vila e vai ao caminho da fé.----------\033[0m\nPelo caminho, você encontra um dos bandidos que roubou sua vila, ele parou para reabastecer suprimentos para o bando (que tinham deixado ele sozinho), em uma vila que ficava a aproximadamente 30 km da sua vila.\nEle logo reconheçe o brazão que representa o selo dos que aceitaram a Cristo em seu peito, e vem atacar você, o que você faz?\n");
+		printf("\n\033[33m~~~~~~~~~~~~~~Você se despede da sua vila e vai ao caminho da fé.~~~~~~~~~~~~~~~\033[0m\nPelo caminho, você encontra um dos bandidos que roubou sua vila, ele parou para reabastecer suprimentos para o bando (que tinham deixado ele sozinho), em uma vila que ficava a aproximadamente 30 km da sua vila.\nEle logo reconheçe o brazão que representa o selo dos que aceitaram a Cristo em seu peito, e vem atacar você, o que você faz?\n");
 
 		printf("\n\033[1;34m===== PRIMEIRO COMBATE =====\033[0m\n");
 		while (vidaBandido[0] > 0 && vidaJogador > 0) {
@@ -172,7 +172,7 @@ void rpg (void) {
 
 				printf("Sua vida atual: %d HP\n", vidaJogador);
 				if (vidaJogador == 0) {
-					printf("\033[1;31m~~~~~~GAME OVER~~~~~~\033[0m\n");
+					printf("\033[1;31m===============\nGAME OVER\n=================\033[0m\n");
 					return;
 				}
 				break;
@@ -181,7 +181,7 @@ void rpg (void) {
 			}
 		}
 		printf("Após essa longa batalha, sua vida foi para %d.\nUm pouco a frente você encontra uma taberna, o preço para uma cama de descanso é de 2 moeda de ouro, você deseja decansar, ou continuar a viagem?\n", vidaJogador);
-		printf("---------------\n1 - Descansar\n2 - Continuar viagem\n---------------\nEscolha: ");
+		printf("\n\033[1;34m=====================\n1 - Descansar\n2 - Continuar viagem\n=====================\n\033[0m\nEscolha: ");
 
 		do {
 			scanf("%d", &escolhaJogador[1]);
@@ -203,7 +203,7 @@ void rpg (void) {
 		printf("\nAo amanhecer, você se depará com com um velho senhor que estava vendendo seus cavalos.\nAo conversar com ele, ele fala:\n");
 		printf("\033[1;35mVELHO TOMAS:\033[0m Meu jovem, você não estaria interessado em ajudar um pobre senhor? Muitos bandidos estão aparecendo ultimamente e atacando as vilas, precisamos de dinheiro para comprar comida!\n");
 		printf("Se você tiver interesse, meu cavalo está saindo por 3 moedas de ouro.\n");
-		printf("\n===============\n1 - COMPRAR UM CAVALO\n2 - NÃO, MUITO OBRIGADO...\n===============\n\nESCOLHA: ");
+		printf("\n\033[1;34m=====================\n1 - COMPRAR UM CAVALO\n2 - NÃO, MUITO OBRIGADO...\n=====================\n\033[0m\nESCOLHA: ");
 
 		do {
 			scanf("%d", &escolhaJogador[2]);
@@ -239,19 +239,19 @@ void rpg (void) {
 			printf("Muito bem, pequeno gafanhoto, eu irei te dar uma parte da escritura sagrada para você. Dizem que com ela você pode derrotar até as mais fortes tribulações.\n");
 			dinheiroJogador -= 5;
 			printf("Você começa a sentir uma força como nunca tinha sentido, e aquele medo que estava no seu coração se vai.\n");
-			printf("\n=====STATUS ATUALIZADOS=====\n");
-			printf("HP = 80\nDANO: 25\n");
+			printf("\n\033[1;32m===== STATUS ATUALIZADOS =====\n");
+			printf("HP = 80\nDANO = 25\n=============================\033[0m\n");
 			vidaJogador = 80;
 			danoArmas[0,1,2] = 25;
 		} else if(escolhaJogador[3] == 0) {
 			printf("Como quiser, tenha uma boa sorte! Que Deus o proteja.\n");
 		}
-		printf("\n~~~~~~ A JORNADA ESTÁ CHEGANDO AO FIM~~~~~~\n");
-		printf("Após uma longa jornada, %s chegou enfim ao seu destino\nPara entrar no covil, nosso jovem guerreiro teve que se manter em modo furtivo, até porque ele sabia das suas próprias forças.\nAdiante, ele encontrá os pertences roubados do povo do vilarejo!\n%s: Graças á Deus, eu achei os pertences!!!\nPorém, ali estava um dos bandidos mais brutais de todo aquele reino\n", nomePersonagem, nomePersonagem);
+		printf("\n\033[33m~~~~~~~~~~~~ A JORNADA ESTÁ CHEGANDO AO FIM ~~~~~~~~~~~~\33[0m\n");
+		printf("Após uma longa jornada, \033[1;36m%s\033[0m chegou enfim ao seu destino\nPara entrar no covil, nosso jovem guerreiro teve que se manter em modo furtivo, até porque ele sabia das suas próprias forças.\nAdiante, ele encontrá os pertences roubados do povo do vilarejo!\n%s: Graças á Deus, eu achei os pertences!!!\nPorém, ali estava um dos bandidos mais brutais de todo aquele reino\n", nomePersonagem, nomePersonagem);
 		printf("O bandido percebe a sua presença, e vem te atacar!");
 
 
-		printf("\n\033[1;34m===== SEGUNDO COMBATE =====\033[0m\n");
+		printf("\n\n\033[1;34m===== SEGUNDO COMBATE =====\033[0m\n");
 		while (vidaBandido[1] > 0 && vidaJogador > 0) {
 
 			printf("Você: %d HP | Bandido: %d HP\n", vidaJogador, vidaBandido[1]);
@@ -294,7 +294,7 @@ void rpg (void) {
 
 				printf("Sua vida atual: %d HP\n", vidaJogador);
 				if (vidaJogador == 0) {
-					printf("\033[1;31m~~~~~~GAME OVER~~~~~~\033[0m\n");
+					printf("\033[1;31m===============\nGAME OVER\n===============\033[0m\n");
 					return;
 				}
 				break;
@@ -352,7 +352,7 @@ void rpg (void) {
 
 				printf("Sua vida atual: %d HP\n", vidaJogador);
 				if (vidaJogador == 0) {
-					printf("\033[1;31m~~~~~~GAME OVER~~~~~~\033[0m\n");
+					printf("\033[1;31m===============\nGAME OVER\n===============\033[0m\n");
 					return;
 				}
 				break;
@@ -372,7 +372,7 @@ void rpg (void) {
 			printf("Infelizmente, \033[1;36m%s\033[0m pereceu em sua jornada...", nomePersonagem);
 		}
 		printf("\n\033[33mCONTINUAÇÃO EM BREVE...\033[0m\n");
-		printf("=====DESEJA FAZER UMA NOVA JORNADA?=====\n");
+		printf("======DESEJA FAZER UMA NOVA JORNADA?======\033[0m\n");
 		printf("Digite 1 para se aventurar novamente e 0 para sair: ");
 		do {
 			scanf("%d", &jogarNovamente);
@@ -382,6 +382,7 @@ void rpg (void) {
 			}
 		} while(jogarNovamente != 1 && jogarNovamente != 0);
 	} while(jogarNovamente != 0);
+	limparTela();
 }
 void jokenpo (void) {
 	int chuteJogador;
